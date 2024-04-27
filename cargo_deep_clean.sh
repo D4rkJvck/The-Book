@@ -3,7 +3,7 @@
 clean_dir() {
     local dir="$1"
 
-    echo "${dir%*/}:"
+    echo -n "${dir%*/}: "
     # '%*/': skip trailing '/'
 
     cd "${dir}" || return
@@ -14,10 +14,14 @@ clean_dir() {
     echo
 }
 
+except="hello_world/"
+
 # Store All Directories
 # from List Command Output
 all_dir=($(ls -d */))
 
 for dir in "${all_dir[@]}"; do
-    clean_dir "${dir}"
+    if [ "${dir}" != "$except" ]; then
+        clean_dir "${dir}"
+    fi
 done
