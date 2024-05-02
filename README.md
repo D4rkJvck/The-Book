@@ -1,6 +1,6 @@
 # The-Book
 
-## Practice Exercises
+## Practice
 
 ### Chapter 3
 - [temperatures](temperatures/src/main.rs): Convert temperatures between Fahrenheit and Celsius.
