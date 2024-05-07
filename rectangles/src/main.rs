@@ -37,16 +37,18 @@ impl Rectangle {
     }
 }
 
+//////////////////////////////////////////////////////////////////////////////
+
 fn main() {
     let scale = 2;
-
+    
     let rect1 = Rectangle {
         width: dbg!(30 * scale),
         height: 50,
     };
-
+    
     let rect2 = Rectangle::square(20);
-
+    
     println!(
         "rect1:
         Valid Width: {}
@@ -60,7 +62,7 @@ fn main() {
         rect1.area(),
         rect1.can_hold(&rect2)
     );
-
+    
     println!(
         "rect2:
         Valid Width: {}
@@ -74,4 +76,41 @@ fn main() {
         rect2.area(),
         rect1.can_hold(&rect1)
     );
+}
+
+//////////////////////////////////////////////////////////////////////////////
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn larger_can_hold_smaller() {
+        let larger = Rectangle {
+            width: 8,
+            height: 7,
+        };
+
+        let smaller = Rectangle {
+            width: 5,
+            height: 1,
+        };
+
+        assert!(larger.can_hold(&smaller));
+    }
+
+    #[test]
+    fn smaller_cannot_hold_larger() {
+        let larger = Rectangle {
+            width: 8,
+            height: 7,
+        };
+
+        let smaller = Rectangle {
+            width: 5,
+            height: 1,
+        };
+
+        assert!(!smaller.can_hold(&larger));
+    }
 }
