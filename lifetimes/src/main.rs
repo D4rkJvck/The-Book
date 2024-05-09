@@ -1,8 +1,8 @@
 #![allow(unused)]
-#[derive(Debug)]
 
 use std::fmt::Display;
 
+#[derive(Debug)]
 struct ImportantExcerpt<'a> {
     part: &'a str,
 }
