@@ -5,6 +5,19 @@ use std::cmp::PartialOrd;
 //     None,
 // }
 
+// impl<T> Option<T> {
+//     fn unwrap_or_else<F>(self, f: F) -> T
+//     where
+//         F: FnOnce() -> T,
+//     {
+//         match self {
+//             Some(x) => x,
+//             None => f(),
+//         }
+//     }
+// }
+
+
 // enum Result<T, E> {
 //     Ok(T),
 //     Err(E),

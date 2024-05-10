@@ -40,42 +40,69 @@ impl Rectangle {
 //////////////////////////////////////////////////////////////////////////////
 
 fn main() {
-    let scale = 2;
-    
-    let rect1 = Rectangle {
-        width: dbg!(30 * scale),
-        height: 50,
-    };
-    
-    let rect2 = Rectangle::square(20);
-    
-    println!(
-        "rect1:
+    {
+        let scale = 2;
+
+        let rect1 = Rectangle {
+            width: dbg!(30 * scale),
+            height: 50,
+        };
+
+        let rect2 = Rectangle::square(20);
+
+        println!(
+            "rect1:
         Valid Width: {}
         Valid Height: {}
         Perimeter: {}
         Area: {}
         Can hold rect2: {}",
-        rect1.width(),
-        rect1.height(),
-        rect1.perimeter(),
-        rect1.area(),
-        rect1.can_hold(&rect2)
-    );
-    
-    println!(
-        "rect2:
+            rect1.width(),
+            rect1.height(),
+            rect1.perimeter(),
+            rect1.area(),
+            rect1.can_hold(&rect2)
+        );
+
+        println!(
+            "rect2:
         Valid Width: {}
         Valid Height: {}
         Perimeter: {}
         Area: {}
         Can hold rect1: {}",
-        rect2.width(),
-        rect2.height(),
-        rect2.perimeter(),
-        rect2.area(),
-        rect1.can_hold(&rect1)
-    );
+            rect2.width(),
+            rect2.height(),
+            rect2.perimeter(),
+            rect2.area(),
+            rect1.can_hold(&rect1)
+        );
+    }
+
+    {
+        let mut list = [
+            Rectangle {
+                width: 10,
+                height: 1,
+            },
+            Rectangle {
+                width: 3,
+                height: 5,
+            },
+            Rectangle {
+                width: 7,
+                height: 12,
+            },
+        ];
+        println!("\nList before sort: {:#?}", list);
+
+        let mut num_sort_ops = 0;
+        list.sort_by_key(|r| {
+            num_sort_ops += 1;
+            r.width
+        });
+        println!("\nSorted List (in {num_sort_ops} operations): {:#?}", list);
+    }
 }
 
 //////////////////////////////////////////////////////////////////////////////
