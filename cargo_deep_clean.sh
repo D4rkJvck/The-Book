@@ -9,6 +9,7 @@ clean_dir() {
     cd "${dir}" || return
 
     cargo clean
+    rmdir target*
 
     cd ..
     echo
