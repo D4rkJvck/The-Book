@@ -1,81 +1,36 @@
+//! # Guessing Game
+//! A fun game where you have 5 chances to guess what number the computer has chosen.
+
+use d4rk_guessing_game::{cooldown, prompt, timer};
 use rand::Rng;
-use std::{cmp::Ordering, io};
+use std::{cmp::Ordering, process::exit};
 
-struct Guess {
-    value: i32,
-}
-
-impl Guess {
-    fn new(value: i32) -> Guess {
-        if value < 1 {
-            panic!(
-                "Guess value must be greater than or equal to 1, got {:?}.",
-                value,
-            );
-        } else if value > 100 {
-            panic!(
-                "Guess value must be less than or equal to 100, got {:?}.",
-                value,
-            );
-        }
-
-        Guess { value }
-    }
-
-    fn value(&self) -> i32 {
-        self.value
-    }
-}
-
-///////////////////////////////////////////////////////////////////////////////////////
-
+/// Generates a random number that will be kept secret till the end.
 fn main() {
-    println!("Guess the number between 1 and 100!");
-    
+    cooldown("\nGuess the number between 1 and 100 !", 1);
+
     let secret_number = rand::thread_rng().gen_range(1..=100);
-    
-    loop {
-        println!("Please input your guess.");
-        
-        let mut guess = String::new();
-        
-        io::stdin()
-        .read_line(&mut guess)
-        .expect("Fail to read line");
-    
-        let guess: i32 = match guess.trim().parse() {
-            Ok(num) => num,
-            Err(_) => continue,
+    let mut count = 5;
+
+    while count > 0 {
+        timer(&mut count);
+
+        let guess = match prompt() {
+            Some(guess) => guess,
+            None => continue,
         };
 
-        let guess = Guess::new(guess);
-
+        // Compare the generated number with the user input for equality
         match guess.value().cmp(&secret_number) {
-            Ordering::Less => println!("Too small!"),
-            Ordering::Greater => println!("Too big!"),
+            Ordering::Less => cooldown("TOO small !", 1),
+            Ordering::Greater => cooldown("too BIG !", 1),
             Ordering::Equal => {
-                println!("You win!");
-                break;
+                println!("\nYOU WIN !");
+                exit(0);
             }
         }
     }
-}
 
-///////////////////////////////////////////////////////////////////////////////////////
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    #[should_panic(expected = "less than or equal to 100")]
-    fn greater_than_100() {
-        Guess::new(200);
-    }
-
-    #[test]
-    #[should_panic(expected = "greater than or equal to 1")]
-    fn less_than_1() {
-        Guess::new(0);
-    }
+    cooldown(&format!("\nThe number to guess was: {secret_number}"), 1);
+    println!("YOU LOSE !")
 }
