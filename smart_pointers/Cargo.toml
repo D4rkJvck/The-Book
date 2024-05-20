@@ -1,0 +1,10 @@
+[workspace]
+resolver = "2"
+members = [
+    "boxes",
+    "deref_trait",
+    "drop_trait",
+    "ref_count",
+    "limit_tracker",
+    "nodes",
+]
