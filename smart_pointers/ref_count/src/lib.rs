@@ -52,6 +52,5 @@ pub fn ref_display(list: &List, list_ref: &Rc<List>) {
         list,
         Rc::strong_count(list_ref),
         list.tail()
-        
     );
 }

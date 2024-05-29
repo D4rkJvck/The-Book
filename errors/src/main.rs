@@ -1,7 +1,8 @@
 use std::fs::File;
 use std::io::{self, ErrorKind, Read};
 
-fn main() { // -> Result<(), Box<dyn Error>> {
+fn main() {
+    // -> Result<(), Box<dyn Error>> {
     match read_file("hello.txt") {
         Ok(content) => {
             println!("\nFile content:\n{:?}", content);
@@ -19,7 +20,7 @@ fn read_file(path: &str) -> Result<String, io::Error> {
     println!("\nReading file...");
 
     let mut content = String::new();
-    
+
     open_file(path)?.read_to_string(&mut content)?;
     Ok(content)
 }
@@ -40,7 +41,7 @@ fn open_file(path: &str) -> Result<File, io::Error> {
                 ErrorKind::NotFound => {
                     create_file(path)?;
                     open_file(path)
-                },
+                }
                 _ => Err(error),
             }
         }
@@ -51,7 +52,7 @@ fn open_file(path: &str) -> Result<File, io::Error> {
 
 fn create_file(path: &str) -> Result<File, io::Error> {
     println!("\nCreating file...");
-    
+
     match File::create(path) {
         Ok(file) => {
             println!("\n{:#?}", file);

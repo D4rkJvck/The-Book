@@ -1,5 +1,4 @@
 fn main() {
-
     let s = String::from("hello");
     take_ownership(s);
 

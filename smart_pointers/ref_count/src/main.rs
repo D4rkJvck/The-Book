@@ -18,7 +18,7 @@ fn main() {
     {
         let c = Rc::new(Cons(Rc::new(RefCell::new(4)), RefCell::new(Rc::clone(&a))));
         ref_display(&c, &a);
-        
+
         if let Some(link) = a.tail() {
             link.borrow_mut() = Rc::clone(&c);
         }

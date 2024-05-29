@@ -46,7 +46,7 @@ fn main() {
     }
 
     {
-        let v3 = vec![1, 2, 3 ,4];
+        let v3 = vec![1, 2, 3, 4];
         println!("Inner Scope: {:?}", v3)
     }
     // println!("Outer Scope: {:?}", v3) //UGLY: Error...

@@ -1,4 +1,3 @@
-
 use std::collections::HashMap;
 
 fn main() {
@@ -26,12 +25,12 @@ fn main() {
     scores.insert(String::from("Blue"), 25);
     println!("{score}");
     println!("Scores 1 -> : {:#?}", scores);
-    
+
     scores.entry(String::from("Blue")).or_insert(50);
     scores.entry(String::from("Yellow")).or_insert(50);
     scores.entry(String::from("Red")).or_insert(75);
     println!("Scores 2 -> : {:#?}", scores);
-    
+
     let text = "Hello world wonderful world";
     let mut map2 = HashMap::new();
     for word in text.split_whitespace() {

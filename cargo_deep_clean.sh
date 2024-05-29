@@ -10,6 +10,7 @@ clean_dir() {
 
     cargo clean
     rmdir target*
+    cargo fmt
 
     cd ..
     echo

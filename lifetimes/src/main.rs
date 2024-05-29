@@ -42,11 +42,7 @@ fn main() {
 
 /////////////////////////////////////////////////////////////////////////////////
 
-fn longest<'a, T>(
-    x: &'a str,
-    y: &'a str,
-    ann: T,
-) -> Option<&'a str>
+fn longest<'a, T>(x: &'a str, y: &'a str, ann: T) -> Option<&'a str>
 where
     T: Display,
 {

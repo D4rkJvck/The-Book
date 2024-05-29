@@ -17,7 +17,6 @@ use std::cmp::PartialOrd;
 //     }
 // }
 
-
 // enum Result<T, E> {
 //     Ok(T),
 //     Err(E),
@@ -25,7 +24,7 @@ use std::cmp::PartialOrd;
 
 struct Point<X1, Y1> {
     x: X1,
-    y: Y1
+    y: Y1,
 }
 
 impl<X1, Y1> Point<X1, Y1> {
@@ -74,15 +73,9 @@ fn main() {
     let result = largest(&char_list);
     println!("\nThe largest char in {:?} is {}", char_list, result);
 
-    let p1 = Point {
-        x: 5,
-        y: 10.4,
-    };
+    let p1 = Point { x: 5, y: 10.4 };
 
-    let p2 = Point {
-        x: "Hello",
-        y: 'c',
-    };
+    let p2 = Point { x: "Hello", y: 'c' };
 
     let p3 = p1.mixup(p2);
     println!("\np3.x = {:?}\np3.y = {:?}", p3.x, p3.y);

@@ -1,5 +1,5 @@
-mod front_of_house;
 mod back_of_house;
+mod front_of_house;
 // mod customer;
 
 pub use crate::front_of_house::hosting::{self, add_to_waitlist};

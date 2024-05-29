@@ -1,5 +1,5 @@
-use std::cell::RefCell;
 use limit_tracker::{LimitTracker, Messenger};
+use std::cell::RefCell;
 
 struct MockMessenger {
     sent_messages: RefCell<Vec<String>>,

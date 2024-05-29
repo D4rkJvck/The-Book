@@ -1,13 +1,13 @@
 fn main() {
     let mut s = String::new();
     println!("1 -> {:?}", s);
-    
+
     let s1 = "tic".to_string();
-    
+
     s.push_str(&s1);
     s.push(' ');
     println!("2 -> {s}");
-    
+
     let s2 = String::from("tac");
 
     s += &s2;
@@ -17,7 +17,7 @@ fn main() {
     let s3 = "toe";
 
     s = format!("{s1}-{s2}-{s3}"); // No ownership taken here...
-    
+
     println!("4 -> {s}");
 
     s = String::from("Здравствуйте");
